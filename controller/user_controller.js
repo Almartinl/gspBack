@@ -1,6 +1,10 @@
-import { jwtVerify, SignJWT } from "jose";
-import md5 from "md5";
-import dao from "../services/dao.js";
+// import { jwtVerify, SignJWT } from "jose";
+// import md5 from "md5";
+// import dao from "../services/dao.js";
+
+const { jwtVerify, SignJWT } = require("jose")
+const md5 = require("md5")
+const dao = require("../services/dao.js")
 
 const controller = {};
 
@@ -209,4 +213,6 @@ controller.deleteContactById = async (req, res) => {
   }
 };
 
-export default controller;
+module.exports = controller;
+
+// export default controller;

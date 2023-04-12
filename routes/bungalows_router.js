@@ -1,5 +1,9 @@
-import express from "express";
-import bungalowsController from "../controller/bungalows_controller.js";
+// import express from "express";
+// import bungalowsController from "../controller/bungalows_controller.js";
+
+const express = require("express");
+const bungalowsController = require("../controller/bungalows_controller.js")
+
 
 const bungalowsRouter = express.Router();
 
@@ -21,4 +25,6 @@ bungalowsRouter.get(
   bungalowsController.getCountPresupuesto
 );
 
-export default bungalowsRouter;
+module.exports = bungalowsRouter;
+
+// export default bungalowsRouter;

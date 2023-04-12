@@ -16,4 +16,6 @@ utils.removeUndefinedKeys = async (obj) => {
   }
 };
 
-export default utils;
+module.exports = utils;
+
+// export default utils;

@@ -1,5 +1,8 @@
-import express from "express";
-import configController from "../controller/configurador_controller.js";
+// import express from "express";
+// import configController from "../controller/configurador_controller.js";
+
+const express = require("express");
+const configController = require("../controller/configurador_controller.js")
 
 const configRouter = express.Router();
 
@@ -25,4 +28,6 @@ configRouter.post("/modelodoble", configController.getModeloBungalowDoble)
 
 configRouter.post("/modelotriple", configController.getModeloBungalowTriple)
 
-export default configRouter;
+module.exports = configRouter
+
+// export default configRouter;

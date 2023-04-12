@@ -1,4 +1,6 @@
-import db from "../mysql.js";
+// import db from "../mysql.js";
+
+const db = require("../mysql.js")
 
 const configQueries = {};
 
@@ -206,4 +208,6 @@ configQueries.getModeloBungalowTriple = async ({
   }
 };
 
-export default configQueries;
+module.exports = configQueries
+
+// export default configQueries;

@@ -1,8 +1,14 @@
-import bungalowsQueries from "./mysql_queries/bungalows_queries.js";
-import configQueries from "./mysql_queries/config_queries.js";
-import obrasQueries from "./mysql_queries/obras_queries.js";
-import productQueries from "./mysql_queries/product_queries.js";
-import userQueries from "./mysql_queries/user_queries.js";
+// import bungalowsQueries from "./mysql_queries/bungalows_queries.js";
+// import configQueries from "./mysql_queries/config_queries.js";
+// import obrasQueries from "./mysql_queries/obras_queries.js";
+// import productQueries from "./mysql_queries/product_queries.js";
+// import userQueries from "./mysql_queries/user_queries.js";
+
+const bungalowsQueries = require("./mysql_queries/bungalows_queries.js")
+const configQueries = require("./mysql_queries/config_queries.js")
+const obrasQueries = require("./mysql_queries/obras_queries.js")
+const productQueries = require("./mysql_queries/product_queries.js")
+const userQueries = require("./mysql_queries/user_queries.js")
 
 const dao = {};
 
@@ -145,4 +151,6 @@ dao.getAllObras = async () => await obrasQueries.getAllObras();
 
 dao.getCountObras = async () => await obrasQueries.getCountObras();
 
-export default dao;
+module.exports = dao
+
+// export default dao;

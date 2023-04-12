@@ -1,7 +1,11 @@
-import db from "../mysql.js ";
-import moment from "moment/moment.js";
-import md5 from "md5";
-import utils from "../../utils/utils.js";
+// import db from "../mysql.js ";
+// import moment from "moment/moment.js";
+// import md5 from "md5";
+// import utils from "../../utils/utils.js";
+
+const db = require("../mysql.js")
+const md5 = require("md5")
+const utils = require("../../utils/utils.js")
 
 const userQueries = {};
 
@@ -220,4 +224,6 @@ userQueries.deleteContactById = async (id) => {
   }
 };
 
-export default userQueries;
+module.exports = userQueries;
+
+// export default userQueries;

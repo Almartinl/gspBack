@@ -1,7 +1,9 @@
-import { currentDir } from "../index.js";
-import dao from "../services/dao.js";
+// import { currentDir } from "../index.js";
+// import dao from "../services/dao.js";
 
-const __dirname = currentDir().__dirname;
+const dao = require("../services/dao.js");
+
+// const __dirname = currentDir().__dirname;
 
 const controller = {};
 
@@ -84,4 +86,7 @@ controller.getCountPresupuesto = async (req, res) => {
     console.log(e.message);
   }
 };
-export default controller;
+
+module.exports = controller;
+
+// export default controller;

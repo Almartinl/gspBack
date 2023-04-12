@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "nodemon ./bin/www.js"
+    "start": "node ./index.js"
   },
   "author": "",
   "license": "ISC",

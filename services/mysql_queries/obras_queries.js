@@ -1,4 +1,6 @@
-import db from "../mysql.js";
+// import db from "../mysql.js";
+
+const db = require("../mysql.js")
 
 const obrasQueries = {};
 
@@ -36,4 +38,6 @@ obrasQueries.getCountObras = async () => {
   }
 };
 
-export default obrasQueries;
+module.exports = obrasQueries;
+
+// export default obrasQueries;

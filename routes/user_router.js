@@ -1,6 +1,10 @@
-import express from "express";
-import userController from "../controller/user_controller.js";
-import validateLoginDto from "../utils/validate_login_dto.js";
+// import express from "express";
+// import userController from "../controller/user_controller.js";
+// import validateLoginDto from "../utils/validate_login_dto.js";
+
+const express = require("express");
+const userController = require("../controller/user_controller.js")
+const validateLoginDto = require("../utils/validate_login_dto.js")
 
 const userRouter = express.Router();
 
@@ -27,4 +31,6 @@ userRouter.get("/contact/all", userController.getAllContact);
 
 userRouter.delete("/delete/contact", userController.deleteContactById);
 
-export default userRouter;
+module.exports = userRouter;
+
+// export default userRouter;

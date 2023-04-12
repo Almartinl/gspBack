@@ -1,4 +1,6 @@
-import db from "../mysql.js";
+// import db from "../mysql.js";
+
+const db = require("../mysql.js")
 
 const productQueries = {};
 
@@ -118,4 +120,6 @@ productQueries.addProduct = async (productData) => {
   }
 };
 
-export default productQueries;
+module.exports = productQueries;
+
+// export default productQueries;

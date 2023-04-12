@@ -1,4 +1,6 @@
-import mysql from "mysql2";
+// import mysql from "mysql2";
+
+const mysql = require("mysql2")
 
 let db = {};
 
@@ -58,4 +60,6 @@ db.query = async (sqlQuery, params, type, conn) => {
     })
 }
 
-export default db;
+module.exports = db
+
+// export default db;

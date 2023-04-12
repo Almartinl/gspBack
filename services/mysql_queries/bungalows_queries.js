@@ -1,4 +1,6 @@
-import db from "../mysql.js";
+// import db from "../mysql.js";
+
+const db = require("../mysql.js")
 
 const bungalowsQueries = {};
 
@@ -133,4 +135,6 @@ bungalowsQueries.getCountPresupuesto = async () => {
   }
 };
 
-export default bungalowsQueries;
+module.exports = bungalowsQueries;
+
+// export default bungalowsQueries;

@@ -1,8 +1,11 @@
-import { currentDir } from "../index.js";
-import dao from "../services/dao.js";
+// import { currentDir } from "../index.js";
+// import dao from "../services/dao.js";
+
+const {currentDir}  = require("../index.js")
+const dao = require("../services/dao.js");
 
 // Definimos la constante __dirname donde obtendremos la ruta absoluta
-const __dirname = currentDir().__dirname;
+// const dirname = currentDir().__dirname;
 
 const controller = {};
 
@@ -64,7 +67,8 @@ controller.uploadImage = async (req, res) => {
     images.forEach(async (image) => {
       // Ya podemos acceder a las propiedades del objeto image.
       // Obtenemos la ruta de la imagen.
-      let uploadPath = __dirname + "/public/images/products/" + image.name;
+      // let uploadPath = dirname + "/public/images/products/" + image.name;
+      let uploadPath = "/public/images/products/" + image.name;
       let uploadRelPath = "/images/products/" + image.name;
       // Usamos el método mv() para ubicar el archivo en nuestro servidor
       image.mv(uploadPath, (err) => {
@@ -118,4 +122,6 @@ controller.addProduct = async (req, res) => {
   }
 };
 
-export default controller;
+module.exports = controller
+
+// export default controller;

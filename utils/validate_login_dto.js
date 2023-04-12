@@ -1,7 +1,12 @@
-import { Type } from "@sinclair/typebox";
-import Ajv from "ajv";
-import addFormat from "ajv-formats";
-import addErrors from "ajv-errors";
+// import { Type } from "@sinclair/typebox";
+// import Ajv from "ajv";
+// import addFormat from "ajv-formats";
+// import addErrors from "ajv-errors";
+
+const { Type } = require("@sinclair/typebox")
+const Ajv = require("ajv")
+const addFormat = require("ajv-formats")
+const addErrors = require("ajv-errors")
 
 const LoginDtoSchema = Type.Object(
   {
@@ -39,4 +44,6 @@ const validateLoginDto = (req, res, next) => {
   next();
 };
 
-export default validateLoginDto;
+module.exports = validateLoginDto
+
+// export default validateLoginDto;

@@ -1,5 +1,8 @@
-import express from "express";
-import productController from "../controller/product_controller.js";
+// import express from "express";
+// import productController from "../controller/product_controller.js";
+
+const express = require("express");
+const productController = require("../controller/product_controller.js")
 
 const productRouter = express.Router();
 
@@ -14,4 +17,6 @@ productRouter.get("/image/:id", productController.getImage);
 
 productRouter.post("/add_product", productController.addProduct);
 
-export default productRouter;
+module.exports = productRouter;
+
+// export default productRouter;
