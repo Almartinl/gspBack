@@ -1,11 +1,11 @@
 // import { currentDir } from "../index.js";
 // import dao from "../services/dao.js";
 
-const {currentDir}  = require("../index.js")
+const dirInfo  = require("../index.js")
 const dao = require("../services/dao.js");
 
 // Definimos la constante __dirname donde obtendremos la ruta absoluta
-// const dirname = currentDir().__dirname;
+// const dirname = dirInfo.__filename;
 
 const controller = {};
 
@@ -50,7 +50,7 @@ controller.getProductById = async (req, res) => {
 
 // controlador para subir una imagen a nuestro servidor y guardar el path en la base de datos.
 controller.uploadImage = async (req, res) => {
-  console.log(req.files);
+
   try {
     // Controlamos cuando el objeto files sea null
     if (req.files === null) return;
@@ -68,15 +68,16 @@ controller.uploadImage = async (req, res) => {
       // Ya podemos acceder a las propiedades del objeto image.
       // Obtenemos la ruta de la imagen.
       // let uploadPath = dirname + "/public/images/products/" + image.name;
-      let uploadPath = "/public/images/products/" + image.name;
+      let uploadPath = "./public/images/products/" + image.name;
       let uploadRelPath = "/images/products/" + image.name;
       // Usamos el método mv() para ubicar el archivo en nuestro servidor
       image.mv(uploadPath, (err) => {
         if (err) return res.status(500).send(err);
       });
-      await dao.addImage({ path: uploadRelPath, producto: req.query.producto });
+      await dao.addProduct(req.body, uploadRelPath)
+      //await dao.addImage({ plano: uploadRelPath, id: product });
     });
-    return res.send("Imagen subida!");
+    return res.send("producto subido!");
   } catch (e) {
     console.log(e.message);
     return res.status(400).send(e.message);
@@ -100,22 +101,27 @@ controller.getImage = async (req, res) => {
 };
 
 controller.addProduct = async (req, res) => {
-  console.log(req.files);
-  const { nombre, precio, ref } = req.body;
+  const image = req.files.imagen.name
 
-  if (!nombre || !precio || !ref) {
-    return res.status(400).send("Error al recibir el body");
-  }
+console.log(image);
+
+  // const {nombre} = req.fields;
+  // console.log(nombre);
+  // if (!nombre) {
+  //   return res.status(400).send("Error al recibir el body");
+  // }
   try {
-    const product = await dao.getProductByRef(ref);
+    // const product = await dao.getProductByRef(ref);
 
-    if (product.length > 0)
-      return res.status(409).send("producto ya registrado");
+    // if (product.length > 0)
+    //   return res.status(409).send("producto ya registrado");
+   
 
-    const addProduct = await dao.addProduct(req.body);
+    const addProduct = await dao.addProduct(req.body, image);
+    console.log(addProduct);
 
     if (addProduct) {
-      return res.send(`Producto ${nombre} con id ${addProduct} registrado`);
+      return res.send(`Producto con id ${addProduct} registrado`);
     }
   } catch (e) {
     console.log(e.message);

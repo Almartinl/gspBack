@@ -46,8 +46,8 @@ dao.getImageById = async (id) => await productQueries.getImageById(id);
 dao.getProductByRef = async (ref) => await productQueries.getProductByRef(ref);
 
 //Añadir un producto a bbdd
-dao.addProduct = async (productData) =>
-  await productQueries.addProduct(productData);
+dao.addProduct = async (productData, image) =>
+  await productQueries.addProduct(productData, image);
 
 dao.getCountModels = async () => await configQueries.getCountModels();
 

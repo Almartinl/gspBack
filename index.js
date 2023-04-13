@@ -25,6 +25,7 @@ const productRouter = require("./routes/product_router.js");
 const fileUpload = require("express-fileupload");
 const { fileURLToPath } = require("url");
 const { dirname, join } = require("path");
+
 const configRouter = require("./routes/config_router.js");
 const bungalowsRouter = require("./routes/bungalows_router.js");
 const obrasRouter = require("./routes/obras_router.js");
@@ -43,17 +44,20 @@ dotenv.config();
 //   return { __dirname, __filename };
 // }
 
-function currentDir(__dirname, __filename) {
+function currentDir() {
+  const __filename = require('url').pathToFileURL("./public/images/products").toString() ;
+  const __dirname = dirname(__filename);
   return { __dirname, __filename };
 }
 
 
-const dirInfo = currentDir(__dirname, __filename);
-console.log(dirInfo);
+const dirInfo = currentDir();
+console.log(dirInfo.__filename);
 
-module.exports = {currentDir}
 
-// const { __dirname } = currentDir();
+//const { __dirname } = currentDir();
+
+module.exports = dirInfo
 
 const app = express();
 
