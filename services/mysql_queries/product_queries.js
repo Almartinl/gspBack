@@ -47,10 +47,10 @@ productQueries.addImage = async (imageData) => {
     // Creamos un objeto con los datos de la imagen a guardar en la base de datos.
     // Usamos la libreria momentjs para registrar la fecha actual
     let imageObj = {
-      plano: imageData.plano,
-      id: imageData.id,
+      path: imageData.path,
+      producto: imageData.idProducto,
     };
-    return await db.query("UPDATE `gsp`.`productos` SET ?", imageObj, "insert", conn);
+    return await db.query("INSERT INTO `gsp`.`imagenproducto` SET ?", imageObj, "insert", conn);
   } catch (e) {
     throw new Error(e);
   } finally {
