@@ -159,11 +159,11 @@ userQueries.addContact = async (contactData) => {
       nombre: contactData.nombre,
       apellidos: contactData.apellidos,
       email: contactData.email,
-      direccion: contactData.direccion,
+      //direccion: contactData.direccion,
       telefono: contactData.telefono,
       descripcion: contactData.descripcion,
-      pais: contactData.pais,
-      ciudad: contactData.ciudad,
+      //pais: contactData.pais,
+      //ciudad: contactData.ciudad,
     };
     return await db.query(
       "INSERT INTO contacto SET ?",
