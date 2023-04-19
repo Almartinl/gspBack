@@ -12,18 +12,21 @@ const controller = {};
 controller.getProducts = async (req, res) => {
   const { nulo } = req.body;
   try {
-    const product = await dao.getProducts(nulo);
+    const product = await dao.getProducts();
+    console.log(product);
     // Si no existe devolvemos un 404 (not found)
     if (product.length <= 0) return res.status(404).send("productos no existe");
     // Devolvemos la ruta donde se encuentra la imagen
-    const response = product.map((item) => {
-      return {
-        ...item,
-        imagenes: JSON.parse(item.imagenes),
-      };
-    });
+    // const response = product.map((item) => {
+    //   return {
+    //     ...item,
+    //     imagenes: JSON.parse(item.imagenes),
+    //   };
+    // });
 
-    return res.send(response);
+
+
+    return res.send(product);
   } catch (e) {
     console.log(e.message);
     return res.status(400).send(e.message);
