@@ -33,18 +33,18 @@ controller.getProducts = async (req, res) => {
   }
 };
 
-controller.getProductById = async (req, res) => {
+controller.getProductByCategory = async (req, res) => {
   try {
-    const product = await dao.getProductsById(req.params.id);
+    const product = await dao.getProductsByCategory(req.body.categoria);
     // Si no existe devolvemos un 404 (not found)
     if (product.length <= 0) return res.status(404).send("productos no existe");
     // Devolvemos la ruta donde se encuentra la imagen
-    console.log(product[0]);
-    const response = {
-      ...product[0],
-      imagenes: JSON.parse(product[0].imagenes),
-    };
-    return res.send(response);
+    // console.log(product[0]);
+    // const response = {
+    //   ...product[0],
+    //   imagenes: JSON.parse(product[0].imagenes),
+    // };
+    return res.send(product);
   } catch (e) {
     console.log(e.message);
     return res.status(400).send(e.message);

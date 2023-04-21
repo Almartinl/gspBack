@@ -8,7 +8,7 @@ const productRouter = express.Router();
 
 productRouter.get("/", productController.getProducts);
 
-productRouter.get("/:id", productController.getProductById);
+productRouter.post("/category", productController.getProductByCategory);
 
 productRouter.post("/upload", productController.uploadImage);
 

@@ -25,14 +25,15 @@ productQueries.getProducts = async () => {
 
 
 
-productQueries.getProductsById = async (id) => {
+productQueries.getProductsByCategory = async (categoria) => {
   // Conectamos con la base de datos y buscamos si existe la imagen por el id.
   let conn = null;
   try {
     conn = await db.createConnection();
+    
     return await db.query(
-      "SELECT  productos.id, productos.nombre, productos.precio, productos.ref, productos.stock,productos.descripcion,productos.descripcioncorta,productos.detalles ,JSON_ARRAYAGG(imagen.path) as imagenes FROM productos JOIN imagen on productos.id = imagen.producto WHERE productos.id = ?",
-      id,
+      "SELECT  productos.* ,JSON_ARRAYAGG(imagenproducto.path) as imagenes FROM productos LEFT JOIN imagenproducto on productos.id = imagenproducto.producto WHERE productos.categoria = ? GROUP BY productos.id",
+      categoria,
       "select",
       conn
     );

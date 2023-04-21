@@ -34,7 +34,7 @@ dao.getCountUser = async () => await userQueries.getCountUser();
 
 dao.getProducts = async () => await productQueries.getProducts();
 
-dao.getProductsById = async (id) => await productQueries.getProductsById(id);
+dao.getProductsByCategory = async (categoria) => await productQueries.getProductsByCategory(categoria);
 
 // Añadir datos de la imagen subida al servidor
 dao.addImage = async (imageData) => await productQueries.addImage(imageData);
