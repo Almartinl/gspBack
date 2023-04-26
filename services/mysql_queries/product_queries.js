@@ -44,6 +44,25 @@ productQueries.getProductsByCategory = async (categoria) => {
   }
 };
 
+// productQueries.addImage = async (imageData) => {
+//   // Conectamos con la base de datos y añadimos el usuario.
+//   let conn = null;
+//   try {
+//     conn = await db.createConnection();
+//     // Creamos un objeto con los datos de la imagen a guardar en la base de datos.
+//     // Usamos la libreria momentjs para registrar la fecha actual
+//     let imageObj = {
+//       path: imageData.path,
+//       producto: imageData.idProducto,
+//     };
+//     return await db.query("INSERT INTO `imagenproducto` (`id`,`producto`, `path`) VALUES (NULL,'?',?)", [imageData.idProducto,imageData.path], "insert", conn);
+//   } catch (e) {
+//     throw new Error(e);
+//   } finally {
+//     conn && (await conn.end());
+//   }
+// };
+
 productQueries.addImage = async (imageData) => {
   // Conectamos con la base de datos y añadimos el usuario.
   let conn = null;
@@ -52,10 +71,11 @@ productQueries.addImage = async (imageData) => {
     // Creamos un objeto con los datos de la imagen a guardar en la base de datos.
     // Usamos la libreria momentjs para registrar la fecha actual
     let imageObj = {
-      path: imageData.path,
+      id:null,
       producto: imageData.idProducto,
+      path: imageData.path,
     };
-    return await db.query("INSERT INTO `gsp`.`imagenproducto` SET ?", imageObj, "insert", conn);
+    return await db.query("INSERT INTO `imagenproducto` SET ?", imageObj, "insert", conn);
   } catch (e) {
     throw new Error(e);
   } finally {
@@ -107,7 +127,7 @@ productQueries.addProduct = async (productData, image) => {
 
     let productObj = {
       nombre: productData.nombre,
-      plano: image
+      foto: image
     };
     return await db.query(
       "INSERT INTO productos SET ? ",

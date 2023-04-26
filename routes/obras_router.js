@@ -10,6 +10,8 @@ obrasRouter.get("/", obrasController.getAllObras);
 
 obrasRouter.get("/count", obrasController.getCountObras);
 
+obrasRouter.post("/add", obrasController.addObra)
+
 module.exports = obrasRouter;
 
 // export default obrasRouter;

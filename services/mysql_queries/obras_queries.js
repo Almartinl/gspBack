@@ -38,6 +38,49 @@ obrasQueries.getCountObras = async () => {
   }
 };
 
+obrasQueries.addObra = async (obraData, image) => {
+  let conn = null;
+
+  try {
+    conn = await db.createConnection();
+
+    let obraObj = {
+      nombre: obraData.nombre,
+      imagen: image
+    };
+    return await db.query(
+      "INSERT INTO obras SET ? ",
+      obraObj,
+      "insert",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
+obrasQueries.addObraImage = async (imageData) => {
+  // Conectamos con la base de datos y añadimos el usuario.
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    // Creamos un objeto con los datos de la imagen a guardar en la base de datos.
+    // Usamos la libreria momentjs para registrar la fecha actual
+    let imageObj = {
+      id:null,
+      obra: imageData.idObra,
+      path: imageData.path,
+    };
+    return await db.query("INSERT INTO `imagenesobras` SET ?", imageObj, "insert", conn);
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
 module.exports = obrasQueries;
 
 // export default obrasQueries;

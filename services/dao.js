@@ -151,6 +151,11 @@ dao.getAllObras = async () => await obrasQueries.getAllObras();
 
 dao.getCountObras = async () => await obrasQueries.getCountObras();
 
+dao.addObra = async (obraData, image) =>
+  await obrasQueries.addObra(obraData, image);
+
+dao.addObraImage = async (imageData) => await obrasQueries.addObraImage(imageData);
+
 module.exports = dao
 
 // export default dao;

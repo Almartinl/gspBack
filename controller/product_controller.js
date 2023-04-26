@@ -55,17 +55,15 @@ controller.getProductByCategory = async (req, res) => {
 controller.uploadImage = async (req, res) => {
 
   try {
-    // Controlamos cuando el objeto files sea null
-    if (req.files === null) return;
-    // Controlamos si nos viene algún tipo de archivo en el objeto files
-    if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send("No se ha cargado ningún archivo");
-    }
+    // // Controlamos cuando el objeto files sea null
+    // if (req.files === null) return;
+    // // Controlamos si nos viene algún tipo de archivo en el objeto files
+    // if (!req.files || Object.keys(req.files).length === 0) {
+    //   return res.status(400).send("No se ha cargado ningún archivo");
+    // }
     // 1 archivo [{}] , >1 archivo [[{},{},...]]
     // Obtenemos un array de objetos con todas las imagenes
-    const images = !req.files.imagen.length
-      ? [req.files.imagen]
-      : req.files.imagen;
+    
 
     const imagenPrincipal = req.files.imagenPrincipal
     
@@ -76,6 +74,10 @@ controller.uploadImage = async (req, res) => {
       if (err) return res.status(500).send(err);
     });
     // Recorremos el array para procesar cada imagen
+    if(req.files.imagen){
+      const images = !req.files.imagen.length
+      ? [req.files.imagen]
+      : req.files.imagen;
     images.forEach(async (image) => {
       // Ya podemos acceder a las propiedades del objeto image.
       // Obtenemos la ruta de la imagen.
@@ -89,7 +91,7 @@ controller.uploadImage = async (req, res) => {
       });
       
       await dao.addImage({ path: uploadRelPath, idProducto: product });
-    });
+    })}
     return res.send("producto subido!");
   } catch (e) {
     console.log(e.message);
