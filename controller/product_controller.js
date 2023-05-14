@@ -1,7 +1,7 @@
 // import { currentDir } from "../index.js";
 // import dao from "../services/dao.js";
 
-const dirInfo  = require("../index.js")
+const dirInfo = require("../index.js");
 const dao = require("../services/dao.js");
 
 // Definimos la constante __dirname donde obtendremos la ruta absoluta
@@ -23,8 +23,6 @@ controller.getProducts = async (req, res) => {
     //     imagenes: JSON.parse(item.imagenes),
     //   };
     // });
-
-
 
     return res.send(product);
   } catch (e) {
@@ -53,7 +51,6 @@ controller.getProductByCategory = async (req, res) => {
 
 // controlador para subir una imagen a nuestro servidor y guardar el path en la base de datos.
 controller.uploadImage = async (req, res) => {
-
   try {
     // // Controlamos cuando el objeto files sea null
     // if (req.files === null) return;
@@ -63,35 +60,45 @@ controller.uploadImage = async (req, res) => {
     // }
     // 1 archivo [{}] , >1 archivo [[{},{},...]]
     // Obtenemos un array de objetos con todas las imagenes
-    
 
-    const imagenPrincipal = req.files.imagenPrincipal
-    
-    let uploadPrincipal = "./public/images/products/" + imagenPrincipal.name
-    let uploadRelPrincipal = "/images/products/" + imagenPrincipal.name
-    const product = await dao.addProduct(req.body, uploadRelPrincipal)
-    imagenPrincipal.mv(uploadPrincipal,  (err) => {
+    const imagenPrincipal = req.files.imagenPrincipal;
+    const plano = req.files.plano;
+
+    let uploadPlano = "./public/images/products/" + plano.name;
+    let uploadRelPlano = "/images/products/" + plano.name;
+    let uploadPrincipal = "./public/images/products/" + imagenPrincipal.name;
+    let uploadRelPrincipal = "/images/products/" + imagenPrincipal.name;
+    const product = await dao.addProduct(
+      req.body,
+      uploadRelPrincipal,
+      uploadRelPlano
+    );
+    imagenPrincipal.mv(uploadPrincipal, (err) => {
+      if (err) return res.status(500).send(err);
+    });
+    plano.mv(uploadPlano, (err) => {
       if (err) return res.status(500).send(err);
     });
     // Recorremos el array para procesar cada imagen
-    if(req.files.imagen){
+    if (req.files.imagen) {
       const images = !req.files.imagen.length
-      ? [req.files.imagen]
-      : req.files.imagen;
-    images.forEach(async (image) => {
-      // Ya podemos acceder a las propiedades del objeto image.
-      // Obtenemos la ruta de la imagen.
-      // let uploadPath = dirname + "/public/images/products/" + image.name;
-      
-      let uploadPath = "./public/images/products/" + image.name;
-      let uploadRelPath = "/images/products/" + image.name;
-      // Usamos el método mv() para ubicar el archivo en nuestro servidor
-      image.mv(uploadPath,  (err) => {
-        if (err) return res.status(500).send(err);
+        ? [req.files.imagen]
+        : req.files.imagen;
+      images.forEach(async (image) => {
+        // Ya podemos acceder a las propiedades del objeto image.
+        // Obtenemos la ruta de la imagen.
+        // let uploadPath = dirname + "/public/images/products/" + image.name;
+
+        let uploadPath = "./public/images/products/" + image.name;
+        let uploadRelPath = "/images/products/" + image.name;
+        // Usamos el método mv() para ubicar el archivo en nuestro servidor
+        image.mv(uploadPath, (err) => {
+          if (err) return res.status(500).send(err);
+        });
+
+        await dao.addImage({ path: uploadRelPath, idProducto: product });
       });
-      
-      await dao.addImage({ path: uploadRelPath, idProducto: product });
-    })}
+    }
     return res.send("producto subido!");
   } catch (e) {
     console.log(e.message);
@@ -116,9 +123,9 @@ controller.getImage = async (req, res) => {
 };
 
 controller.addProduct = async (req, res) => {
-  const image = req.files.imagen.name
+  const image = req.files.imagen.name;
 
-console.log(image);
+  console.log(image);
 
   // const {nombre} = req.fields;
   // console.log(nombre);
@@ -130,7 +137,6 @@ console.log(image);
 
     // if (product.length > 0)
     //   return res.status(409).send("producto ya registrado");
-   
 
     const addProduct = await dao.addProduct(req.body, image);
     console.log(addProduct);
@@ -143,6 +149,6 @@ console.log(image);
   }
 };
 
-module.exports = controller
+module.exports = controller;
 
 // export default controller;

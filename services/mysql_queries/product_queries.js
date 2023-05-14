@@ -1,10 +1,8 @@
 // import db from "../mysql.js";
 
-const db = require("../mysql.js")
+const db = require("../mysql.js");
 
 const productQueries = {};
-
-
 
 productQueries.getProducts = async () => {
   let conn = null;
@@ -23,14 +21,12 @@ productQueries.getProducts = async () => {
   }
 };
 
-
-
 productQueries.getProductsByCategory = async (categoria) => {
   // Conectamos con la base de datos y buscamos si existe la imagen por el id.
   let conn = null;
   try {
     conn = await db.createConnection();
-    
+
     return await db.query(
       "SELECT  productos.* ,JSON_ARRAYAGG(imagenproducto.path) as imagenes FROM productos LEFT JOIN imagenproducto on productos.id = imagenproducto.producto WHERE productos.categoria = ? GROUP BY productos.id",
       categoria,
@@ -71,11 +67,16 @@ productQueries.addImage = async (imageData) => {
     // Creamos un objeto con los datos de la imagen a guardar en la base de datos.
     // Usamos la libreria momentjs para registrar la fecha actual
     let imageObj = {
-      id:null,
+      id: null,
       producto: imageData.idProducto,
       path: imageData.path,
     };
-    return await db.query("INSERT INTO `imagenproducto` SET ?", imageObj, "insert", conn);
+    return await db.query(
+      "INSERT INTO `imagenproducto` SET ?",
+      imageObj,
+      "insert",
+      conn
+    );
   } catch (e) {
     throw new Error(e);
   } finally {
@@ -119,7 +120,7 @@ productQueries.getProductByRef = async (ref) => {
   }
 };
 
-productQueries.addProduct = async (productData, image) => {
+productQueries.addProduct = async (productData, image, plano) => {
   let conn = null;
 
   try {
@@ -127,7 +128,33 @@ productQueries.addProduct = async (productData, image) => {
 
     let productObj = {
       nombre: productData.nombre,
-      foto: image
+      categoria: productData.categoria,
+      ref: productData.ref,
+      descripcion: productData.descripcion,
+      largo: productData.largo,
+      alto: productData.alto,
+      ancho: productData.ancho,
+      peso: productData.peso,
+      estructura: productData.estructura,
+      paneles: productData.paneles,
+      cubierta: productData.cubierta,
+      suelo: productData.suelo,
+      puerta70: productData.puerta70,
+      puerta85: productData.puerta85,
+      puertadoble140: productData.puerta140,
+      ventana100x100: productData.ventana100x100,
+      ventana40x40: productData.ventana40x40,
+      ventana100x80: productData.ventana100x80,
+      climatizador: productData.clima,
+      electricidad: productData.electricidad,
+      lavabo: productData.lavabo,
+      wc: productData.wc,
+      urinario: productData.urinario,
+      duchas: productData.duchas,
+      apilable: productData.apilable,
+      otroscomponentes: productData.otros,
+      plano: plano,
+      foto: image,
     };
     return await db.query(
       "INSERT INTO productos SET ? ",

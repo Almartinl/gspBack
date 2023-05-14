@@ -4,11 +4,11 @@
 // import productQueries from "./mysql_queries/product_queries.js";
 // import userQueries from "./mysql_queries/user_queries.js";
 
-const bungalowsQueries = require("./mysql_queries/bungalows_queries.js")
-const configQueries = require("./mysql_queries/config_queries.js")
-const obrasQueries = require("./mysql_queries/obras_queries.js")
-const productQueries = require("./mysql_queries/product_queries.js")
-const userQueries = require("./mysql_queries/user_queries.js")
+const bungalowsQueries = require("./mysql_queries/bungalows_queries.js");
+const configQueries = require("./mysql_queries/config_queries.js");
+const obrasQueries = require("./mysql_queries/obras_queries.js");
+const productQueries = require("./mysql_queries/product_queries.js");
+const userQueries = require("./mysql_queries/user_queries.js");
 
 const dao = {};
 
@@ -34,7 +34,8 @@ dao.getCountUser = async () => await userQueries.getCountUser();
 
 dao.getProducts = async () => await productQueries.getProducts();
 
-dao.getProductsByCategory = async (categoria) => await productQueries.getProductsByCategory(categoria);
+dao.getProductsByCategory = async (categoria) =>
+  await productQueries.getProductsByCategory(categoria);
 
 // Añadir datos de la imagen subida al servidor
 dao.addImage = async (imageData) => await productQueries.addImage(imageData);
@@ -46,8 +47,8 @@ dao.getImageById = async (id) => await productQueries.getImageById(id);
 dao.getProductByRef = async (ref) => await productQueries.getProductByRef(ref);
 
 //Añadir un producto a bbdd
-dao.addProduct = async (productData, image) =>
-  await productQueries.addProduct(productData, image);
+dao.addProduct = async (productData, image, plano) =>
+  await productQueries.addProduct(productData, image, plano);
 
 dao.getCountModels = async () => await configQueries.getCountModels();
 
@@ -154,8 +155,9 @@ dao.getCountObras = async () => await obrasQueries.getCountObras();
 dao.addObra = async (obraData, image) =>
   await obrasQueries.addObra(obraData, image);
 
-dao.addObraImage = async (imageData) => await obrasQueries.addObraImage(imageData);
+dao.addObraImage = async (imageData) =>
+  await obrasQueries.addObraImage(imageData);
 
-module.exports = dao
+module.exports = dao;
 
 // export default dao;
