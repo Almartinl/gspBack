@@ -2,9 +2,10 @@
 // import md5 from "md5";
 // import dao from "../services/dao.js";
 
-const { jwtVerify, SignJWT } = require("jose")
-const md5 = require("md5")
-const dao = require("../services/dao.js")
+const { jwtVerify, SignJWT } = require("jose");
+const md5 = require("md5");
+const dao = require("../services/dao.js");
+const transporter = require("../config/nodemailer.js");
 
 const controller = {};
 
@@ -157,13 +158,26 @@ controller.getCountUser = async (req, res) => {
 };
 
 controller.addContact = async (req, res) => {
-  const { nombre, email, descripcion } = req.body;
+  const { nombre, email, descripcion, telefono, apellidos } = req.body;
   if (!nombre || !email || !descripcion)
     return res.status(400).send("Error al recibir el body");
 
   try {
     const addContact = await dao.addContact(req.body);
-    if (addContact) return res.send(`Formulario Registrado`);
+    if (addContact) {
+      await transporter.sendMail({
+        from: '"Peticion Web GSP" <almartin.tpv@gmail.com>', // sender address
+        to: `<${email}>`, // list of receivers
+        subject: `Peticion del Cliente ${nombre}`, // Subject line
+        html: `
+        <h3>Nom: ${nombre}<h3>
+        <h3>Prenom: ${apellidos}<h3>
+        <h3>email: ${email}<h3>
+        <h3>tel:  ${telefono}<h3>
+        <h1>Descripcion: ${descripcion}</h1>`,
+      });
+      return res.send(`Formulario Registrado`);
+    }
   } catch (e) {
     console.log(e.message);
   }
