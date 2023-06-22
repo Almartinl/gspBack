@@ -6,6 +6,7 @@ const { jwtVerify, SignJWT } = require("jose");
 const md5 = require("md5");
 const dao = require("../services/dao.js");
 const transporter = require("../config/nodemailer.js");
+const fs = require("fs");
 
 const controller = {};
 
@@ -164,6 +165,12 @@ controller.addContact = async (req, res) => {
 
   try {
     const addContact = await dao.addContact(req.body);
+    const plano = req.files.foto;
+
+    let uploadFoto = "./public/images/products/" + plano.name;
+    plano.mv(uploadFoto, (err) => {
+      if (err) return res.status(500).send(err);
+    });
     if (addContact) {
       await transporter.sendMail({
         from: '"Peticion Web GSP" <almartin.tpv@gmail.com>', // sender address
@@ -175,7 +182,10 @@ controller.addContact = async (req, res) => {
         <h3>email: ${email}<h3>
         <h3>tel:  ${telefono}<h3>
         <h1>Descripcion: ${descripcion}</h1>`,
+        attachments: [{ filename: plano.name, path: uploadFoto }],
       });
+
+      fs.unlinkSync(uploadFoto);
       return res.send(`Formulario Registrado`);
     }
   } catch (e) {
