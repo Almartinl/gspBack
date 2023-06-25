@@ -2,6 +2,7 @@
 // import dao from "../services/dao.js";
 
 const dao = require("../services/dao.js");
+const transporter = require("../config/nodemailer.js");
 
 // const __dirname = currentDir().__dirname;
 
@@ -43,13 +44,23 @@ controller.deleteBungalowById = async (req, res) => {
 };
 
 controller.addPresupuesto = async (req, res) => {
-  const { usuario, descripcion } = req.body;
+  const { usuario, descripcion, email } = req.body;
   if (!usuario || !descripcion)
     return res.status(400).send("Error al recibir el body");
 
   try {
     const addPresupuesto = await dao.addPresupuesto(req.body);
-    if (addPresupuesto) return res.send(`${descripcion} registrado`);
+    if (addPresupuesto) {
+      await transporter.sendMail({
+        from: '"Demande Web GSP" <cheloboraled@gmail.com>', // sender address
+        to: `<Almartin.tpv@gmail.com>`, // list of receivers
+        subject: `Demande client ${email}`, // Subject line
+        html: `
+        <h3>email: ${email}<h3>
+        <h1>Descripcion: ${descripcion}</h1>`,
+      });
+      return res.send(`${descripcion} registrado`);
+    }
   } catch (e) {
     console.log(e.message);
   }

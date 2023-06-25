@@ -178,7 +178,7 @@ controller.addContact = async (req, res) => {
 
     if (addContact) {
       await transporter.sendMail({
-        from: '"Demande Web GSP" <almartin.tpv@gmail.com>', // sender address
+        from: '"Demande Web GSP" <cheloboraled@gmail.com>', // sender address
         to: `<${email}>`, // list of receivers
         subject: `Demande client ${nombre}`, // Subject line
         // html: `
