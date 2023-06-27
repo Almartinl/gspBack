@@ -3,8 +3,8 @@
 // import validateLoginDto from "../utils/validate_login_dto.js";
 
 const express = require("express");
-const userController = require("../controller/user_controller.js")
-const validateLoginDto = require("../utils/validate_login_dto.js")
+const userController = require("../controller/user_controller.js");
+const validateLoginDto = require("../utils/validate_login_dto.js");
 
 const userRouter = express.Router();
 
@@ -17,6 +17,8 @@ userRouter.post("/", userController.addUser);
 userRouter.post("/login", validateLoginDto, userController.loginUser);
 
 userRouter.patch("/delete/:id", userController.deleteUser);
+
+userRouter.get("/verify/:id", userController.getVerify);
 
 // Modificar un usuario por su id
 userRouter.patch("/:id", userController.updateUser);

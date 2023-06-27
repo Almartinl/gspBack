@@ -30,6 +30,8 @@ dao.deleteUser = async (id) => await userQueries.deleteUser(id);
 dao.updateUser = async (id, userData) =>
   await userQueries.updateUser(id, userData);
 
+dao.getVerify = async (id) => await userQueries.getVerify(id);
+
 dao.getCountUser = async () => await userQueries.getCountUser();
 
 dao.getProducts = async () => await productQueries.getProducts();
