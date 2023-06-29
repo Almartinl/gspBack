@@ -1,5 +1,6 @@
 // import db from "../mysql.js";
 
+const utils = require("../../utils/utils.js");
 const db = require("../mysql.js");
 
 const productQueries = {};
@@ -160,6 +161,81 @@ productQueries.addProduct = async (productData, image, plano) => {
       "INSERT INTO productos SET ? ",
       productObj,
       "insert",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
+productQueries.addOffer = async (productData, image) => {
+  let conn = null;
+
+  try {
+    conn = await db.createConnection();
+
+    let productObj = {
+      nombre: productData.nombre,
+      path: image,
+    };
+    return await db.query(
+      "INSERT INTO ofertas SET ? ",
+      productObj,
+      "insert",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
+productQueries.updateOffer = async (id, userData) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    let userObj = {
+      activo: userData.activo,
+    };
+    // Eliminamos los campos que no se van a modificar (no llegan por el body)
+    userObj = await utils.removeUndefinedKeys(userObj);
+
+    return await db.query(
+      "UPDATE ofertas SET ? WHERE id = ?",
+      [userObj, id],
+      "update",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
+productQueries.getOffer = async () => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query("SELECT * from ofertas", [], "select", conn);
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
+productQueries.getOfferActive = async () => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM ofertas where activo = 1",
+      [],
+      "select",
       conn
     );
   } catch (e) {

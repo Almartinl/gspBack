@@ -149,6 +149,65 @@ controller.addProduct = async (req, res) => {
   }
 };
 
+controller.addOffer = async (req, res) => {
+  try {
+    const imagenPrincipal = req.files.imagenPrincipal;
+    let uploadPrincipal = "./public/images/products/" + imagenPrincipal.name;
+    let uploadRelPrincipal = "/images/products/" + imagenPrincipal.name;
+
+    const addOffer = await dao.addOffer(req.body, uploadRelPrincipal);
+    imagenPrincipal.mv(uploadPrincipal, (err) => {
+      if (err) return res.status(500).send(err);
+    });
+    console.log(addOffer);
+
+    if (addOffer) {
+      return res.send(`Oferta con id ${addOffer} registrado`);
+    }
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+controller.updateOffer = async (req, res) => {
+  try {
+    // Si no nos llega ningún campo por el body devolvemos un 400 (bad request)
+    if (Object.entries(req.body).length === 0)
+      return res.status(400).send("Error al recibir el body");
+    // Actualizamos el usuario
+    await dao.updateOffer(req.params.id, req.body);
+    // Devolvemos la respuesta
+    return res.send(`Oferta con id ${req.params.id} modificado`);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+controller.getOffer = async (req, res) => {
+  try {
+    const offer = await dao.getOffer();
+    console.log(offer);
+    if (offer.length <= 0) return res.status(404).send("Ofertas no existe");
+    return res.send(offer);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).send(e.message);
+  }
+};
+
+controller.getOfferActive = async (req, res) => {
+  try {
+    const offerActive = await dao.getOfferActive();
+    console.log(offerActive);
+    // if (offerActive.length <= 0)
+    //   return res.status(404).send("Ofertas no existe");
+    return res.send(offerActive);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).send(e.message);
+  }
+};
+
 module.exports = controller;
 
 // export default controller;

@@ -52,6 +52,16 @@ dao.getProductByRef = async (ref) => await productQueries.getProductByRef(ref);
 dao.addProduct = async (productData, image, plano) =>
   await productQueries.addProduct(productData, image, plano);
 
+dao.getOffer = async () => await productQueries.getOffer();
+
+dao.getOfferActive = async () => await productQueries.getOfferActive();
+
+dao.addOffer = async (productData, image) =>
+  await productQueries.addOffer(productData, image);
+
+dao.updateOffer = async (id, userData) =>
+  await productQueries.updateOffer(id, userData);
+
 dao.getCountModels = async () => await configQueries.getCountModels();
 
 dao.getDisposicion = async () => await configQueries.getDisposicion();
