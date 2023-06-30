@@ -50,7 +50,7 @@ controller.addUser = async (req, res) => {
 
     if (addUser) {
       await transporter.sendMail({
-        from: '"Demande Web GSP" <cheloboraled@gmail.com>', // sender address
+        from: '"Demande Web GSP" <globalsolutionsprefabriquees@gmail.com>', // sender address
         to: `<${email}>`, // list of receivers
         subject: `Vérification Web GSP`, // Subject line
         html: `
@@ -549,7 +549,7 @@ controller.addContact = async (req, res) => {
 
     if (addContact) {
       await transporter.sendMail({
-        from: '"Demande Web GSP" <cheloboraled@gmail.com>', // sender address
+        from: '"Demande Web GSP" <globalsolutionsprefabriquees@gmail.com>', // sender address
         to: `<${email}>`, // list of receivers
         subject: `Demande client ${nombre}`, // Subject line
         html: `
@@ -875,8 +875,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       });
 
       await transporter.sendMail({
-        from: '"Demande Web GSP" <cheloboraled@gmail.com>', // sender address
-        to: `<almartin.tpv@gmail.com>`, // list of receivers
+        from: '"Demande Web GSP" <globalsolutionsprefabriquees@gmail.com>', // sender address
+        to: `<globalsolutionsprefabriquees@gmail.com>`, // list of receivers
         subject: `Demande client ${nombre}`, // Subject line
         html: `
         <html

@@ -52,8 +52,8 @@ controller.addPresupuesto = async (req, res) => {
     const addPresupuesto = await dao.addPresupuesto(req.body);
     if (addPresupuesto) {
       await transporter.sendMail({
-        from: '"Demande Web GSP" <cheloboraled@gmail.com>', // sender address
-        to: `<Almartin.tpv@gmail.com>`, // list of receivers
+        from: '"Demande Web GSP" <globalsolutionsprefabriquees@gmail.com>', // sender address
+        to: `<globalsolutionsprefabriquees@gmail.com>`, // list of receivers
         subject: `Demande client ${email}`, // Subject line
         html: `
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
