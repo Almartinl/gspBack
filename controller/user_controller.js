@@ -1879,6 +1879,58 @@ controller.deleteContactById = async (req, res) => {
   }
 };
 
+controller.requestPasswordReset = async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res
+      .status(400)
+      .json({ error: "Debes proporcionar un correo electrónico" });
+  }
+
+  try {
+    // Verificar si el usuario con el correo electrónico proporcionado existe
+    const user = await dao.getUserByEmail(email);
+
+    if (user.length <= 0) {
+      return res.status(404).json({ error: "Usuario no registrado" });
+    }
+
+    const [newUser] = user;
+    // Generar un token de restablecimiento de contraseña único y seguro
+    const jwtConstructor = new SignJWT({
+      id: newUser.id,
+    });
+
+    const encoder = new TextEncoder();
+
+    const jwt = await jwtConstructor
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setIssuedAt()
+      .setExpirationTime("1h")
+      .sign(encoder.encode(process.env.JWT_SECRET));
+
+    // Guardar el token de restablecimiento de contraseña en la base de datos junto con una fecha de vencimiento
+
+    // Enviar un correo electrónico al usuario con un enlace para restablecer la contraseña
+    const resetLink = `https://almartindev.online/reset-password?token=${jwt}`;
+
+    await transporter.sendMail({
+      from: '"Demande Web GSP" <globalsolutionsprefabriquees@gmail.com>', // sender address
+      to: `<${email}>`, // list of receivers
+      subject: `Reset Password`, // Subject line
+      text: `Pour réinitialiser votre mot de passe, cliquez sur le lien ci-dessous: ${resetLink}`,
+    });
+
+    return res.send(
+      "Se ha enviado un correo electrónico con las instrucciones para restablecer la contraseña"
+    );
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
 module.exports = controller;
 
 // export default controller;

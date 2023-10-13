@@ -20,6 +20,8 @@ userRouter.patch("/delete/:id", userController.deleteUser);
 
 userRouter.get("/verify/:id", userController.getVerify);
 
+userRouter.post("/reset-password", userController.requestPasswordReset);
+
 // Modificar un usuario por su id
 userRouter.patch("/:id", userController.updateUser);
 
