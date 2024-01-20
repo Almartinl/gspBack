@@ -162,6 +162,8 @@ dao.deleteContactById = async (id) => await userQueries.deleteContactById(id);
 
 dao.getAllObras = async () => await obrasQueries.getAllObras();
 
+dao.getAllObrasPublic = async () => await obrasQueries.getAllObrasPublic();
+
 dao.getCountObras = async () => await obrasQueries.getCountObras();
 
 dao.addObra = async (obraData, image) =>
@@ -169,6 +171,9 @@ dao.addObra = async (obraData, image) =>
 
 dao.addObraImage = async (imageData) =>
   await obrasQueries.addObraImage(imageData);
+
+dao.updateObra = async (id, obraData) =>
+  await obrasQueries.updateObra(id, obraData);
 
 module.exports = dao;
 
