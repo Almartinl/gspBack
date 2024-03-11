@@ -199,7 +199,7 @@ controller.addPresupuesto = async (req, res) => {
           <tr>
             <td style="padding-right: 0px;padding-left: 0px;" align="center">
 
-              <img align="center" border="0" src="https://almartindev.online/api/images/logo.png" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 480px;" width="480"/>
+              <img align="center" border="0" src="https://almartindev.com/api/images/logo.png" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 480px;" width="480"/>
 
             </td>
           </tr>
@@ -463,7 +463,7 @@ controller.addPresupuesto = async (req, res) => {
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 5px">
               <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                 <a href="https://www.facebook.com/Global-Solutions-Pr%C3%A9fabriqu%C3%A9es-115355516956606" title="Facebook" target="_blank">
-                  <img src="https://almartindev.online/api/images/facebook.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                  <img src="https://almartindev.com/api/images/facebook.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
               </td></tr>
             </tbody></table>
@@ -473,7 +473,7 @@ controller.addPresupuesto = async (req, res) => {
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 5px">
               <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                 <a href="https://www.linkedin.com/company/global-solutions-pr%C3%A9fabriqu%C3%A9es/" title="LinkedIn" target="_blank">
-                  <img src="https://almartindev.online/api/images/linkedin.png" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                  <img src="https://almartindev.com/api/images/linkedin.png" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
               </td></tr>
             </tbody></table>
@@ -483,7 +483,7 @@ controller.addPresupuesto = async (req, res) => {
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
               <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                 <a href="https://api.whatsapp.com/send?phone=221772260577&text=Bonjour%20GLOBAL%20SOLUTIONS%20PREFABRIQUEES.%20Je%20suis%20un/une%20interess%C3%A9(e)." title="WhatsApp" target="_blank">
-                  <img src="https://almartindev.online/api/images/whats.png" alt="WhatsApp" title="WhatsApp" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                  <img src="https://almartindev.com/api/images/whats.png" alt="WhatsApp" title="WhatsApp" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
               </td></tr>
             </tbody></table>
