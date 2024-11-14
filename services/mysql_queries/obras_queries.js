@@ -9,7 +9,7 @@ obrasQueries.getAllObras = async () => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT obras.id, obras.nombre, obras.imagen, JSON_ARRAYAGG(imagenesobras.path) as imagenes, obras.public FROM obras join imagenesobras on imagenesobras.obra = obras.id group by obras.id",
+      "SELECT obras.id, obras.nombre, obras.imagen, JSON_ARRAYAGG(imagenesobras.path) as imagenes, obras.public, obras.position FROM obras join imagenesobras on imagenesobras.obra = obras.id group by obras.id",
       [],
       "select",
       conn
@@ -26,7 +26,7 @@ obrasQueries.getAllObrasPublic = async () => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT obras.id, obras.nombre, obras.imagen, JSON_ARRAYAGG(imagenesobras.path) as imagenes, obras.public FROM obras join imagenesobras on imagenesobras.obra = obras.id where obras.public = 1 group by obras.id",
+      "SELECT obras.id, obras.nombre, obras.imagen, JSON_ARRAYAGG(imagenesobras.path) as imagenes, obras.public, obras.position FROM obras join imagenesobras on imagenesobras.obra = obras.id where obras.public = 1 group by obras.id",
       [],
       "select",
       conn
