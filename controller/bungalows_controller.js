@@ -68,8 +68,8 @@ controller.addPresupuesto = async (req, res) => {
         });
 
         await transporter.sendMail({
-          from: '"Demande Web GSP" <info@almartindev.com>', // sender address
-          to: `<info@almartindev.com`, // list of receivers
+          from: '"Demande Web GSP" <info@globalsolutionsprefabriquees.com>', // sender address
+          to: `<info@globalsolutionsprefabriquees.com`, // list of receivers
           subject: `Demande client ${email}`, // Subject line
           html: `
                 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

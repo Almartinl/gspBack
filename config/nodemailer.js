@@ -27,12 +27,12 @@ const nodemailer = require("nodemailer");
 // });
 
 const transporter = nodemailer.createTransport({
-  host: "mail.almartindev.com",
+  host: "mail.globalsolutionsprefabriquees.com",
   port: 465,
   secure: true,
   auth: {
-    user: "info@almartindev.com",
-    pass: "Martin0902",
+    user: "info@globalsolutionsprefabriquees.com",
+    pass: "Globalsp2024",
   },
   tls: {
     rejectUnauthorized: false,

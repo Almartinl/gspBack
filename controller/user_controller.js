@@ -50,7 +50,7 @@ controller.addUser = async (req, res) => {
 
     if (addUser) {
       await transporter.sendMail({
-        from: '"Demande Web GSP" <info@almartindev.com>', // sender address
+        from: '"Demande Web GSP" <info@globalsolutionsprefabriquees.com>', // sender address
         to: `<${email}>`, // list of receivers
         subject: `Vérification Web GSP`, // Subject line
         html: `
@@ -549,7 +549,7 @@ controller.addContact = async (req, res) => {
 
     if (addContact) {
       await transporter.sendMail({
-        from: '"Demande Web GSP" <info@almartindev.com>', // sender address
+        from: '"Demande Web GSP" <info@globalsolutionsprefabriquees.com>', // sender address
         to: `<${email}>`, // list of receivers
         subject: `Demande client ${nombre}`, // Subject line
         html: `
@@ -874,9 +874,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
         `,
       });
 
-
       // await transporter.sendMail({
-      //   from: '"Demande Web GSP" <info@almartindev.com>', // sender address
+      //   from: '"Demande Web GSP" <info@globalsolutionsprefabriquees.com>', // sender address
       //   to: `<globalsolutionsprefabriquees@gmail.com>`, // list of receivers
       //   subject: `Demande client ${nombre}`, // Subject line
       //   html: `
@@ -901,7 +900,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       //     <!--<![endif]-->
       //     <title></title>
-      
+
       //     <style type="text/css">
       //       @media only screen and (min-width: 520px) {
       //         .u-row {
@@ -910,20 +909,20 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //         .u-row .u-col {
       //           vertical-align: top;
       //         }
-      
+
       //         .u-row .u-col-30p6 {
       //           width: 153px !important;
       //         }
-      
+
       //         .u-row .u-col-69p4 {
       //           width: 347px !important;
       //         }
-      
+
       //         .u-row .u-col-100 {
       //           width: 500px !important;
       //         }
       //       }
-      
+
       //       @media (max-width: 520px) {
       //         .u-row-container {
       //           max-width: 100% !important;
@@ -949,32 +948,32 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //         margin: 0;
       //         padding: 0;
       //       }
-      
+
       //       table,
       //       tr,
       //       td {
       //         vertical-align: top;
       //         border-collapse: collapse;
       //       }
-      
+
       //       p {
       //         margin: 0;
       //       }
-      
+
       //       .ie-container table,
       //       .mso-container table {
       //         table-layout: fixed;
       //       }
-      
+
       //       * {
       //         line-height: inherit;
       //       }
-      
+
       //       a[x-apple-data-detectors="true"] {
       //         color: inherit !important;
       //         text-decoration: none !important;
       //       }
-      
+
       //       table,
       //       td {
       //         color: #000000;
@@ -985,7 +984,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //       }
       //     </style>
       //   </head>
-      
+
       //   <body
       //     class="clean-body u_body"
       //     style="
@@ -1025,7 +1024,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //             "
       //           >
       //             <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #e7e7e7;"><![endif]-->
-      
+
       //             <div
       //               class="u-row-container"
       //               style="padding: 0px; background-color: transparent"
@@ -1052,7 +1051,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                   "
       //                 >
       //                   <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px;"><tr style="background-color: transparent;"><![endif]-->
-      
+
       //                   <!--[if (mso)|(IE)]><td align="center" width="500" style="width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
       //                   <div
       //                     class="u-col u-col-100"
@@ -1135,7 +1134,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <table
       //                           style="font-family: arial, helvetica, sans-serif"
       //                           role="presentation"
@@ -1197,7 +1196,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <table
       //                           style="font-family: arial, helvetica, sans-serif"
       //                           role="presentation"
@@ -1233,7 +1232,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <table
       //                           style="font-family: arial, helvetica, sans-serif"
       //                           role="presentation"
@@ -1295,7 +1294,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <table
       //                           style="font-family: arial, helvetica, sans-serif"
       //                           role="presentation"
@@ -1333,7 +1332,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <table
       //                           style="font-family: arial, helvetica, sans-serif"
       //                           role="presentation"
@@ -1395,7 +1394,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <!--[if (!mso)&(!IE)]><!-->
       //                       </div>
       //                       <!--<![endif]-->
@@ -1406,7 +1405,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                 </div>
       //               </div>
       //             </div>
-      
+
       //             <div
       //               class="u-row-container"
       //               style="padding: 0px; background-color: #3b8f1e"
@@ -1433,7 +1432,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                   "
       //                 >
       //                   <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: #3b8f1e;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px;"><tr style="background-color: transparent;"><![endif]-->
-      
+
       //                   <!--[if (mso)|(IE)]><td align="center" width="347" style="width: 347px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
       //                   <div
       //                     class="u-col u-col-69p4"
@@ -1547,7 +1546,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <!--[if (!mso)&(!IE)]><!-->
       //                       </div>
       //                       <!--<![endif]-->
@@ -1609,7 +1608,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                                 <div align="center">
       //                                   <div style="display: table; max-width: 110px">
       //                                     <!--[if (mso)|(IE)]><table width="110" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse;" align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:110px;"><tr><![endif]-->
-      
+
       //                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 5px;" valign="top"><![endif]-->
       //                                     <table
       //                                       align="left"
@@ -1670,7 +1669,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                                       </tbody>
       //                                     </table>
       //                                     <!--[if (mso)|(IE)]></td><![endif]-->
-      
+
       //                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 5px;" valign="top"><![endif]-->
       //                                     <table
       //                                       align="left"
@@ -1731,7 +1730,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                                       </tbody>
       //                                     </table>
       //                                     <!--[if (mso)|(IE)]></td><![endif]-->
-      
+
       //                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
       //                                     <table
       //                                       align="left"
@@ -1792,7 +1791,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                                       </tbody>
       //                                     </table>
       //                                     <!--[if (mso)|(IE)]></td><![endif]-->
-      
+
       //                                     <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
       //                                   </div>
       //                                 </div>
@@ -1800,7 +1799,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                             </tr>
       //                           </tbody>
       //                         </table>
-      
+
       //                         <!--[if (!mso)&(!IE)]><!-->
       //                       </div>
       //                       <!--<![endif]-->
@@ -1811,7 +1810,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       //                 </div>
       //               </div>
       //             </div>
-      
+
       //             <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
       //           </td>
       //         </tr>
@@ -1914,10 +1913,10 @@ controller.requestPasswordReset = async (req, res) => {
     // Guardar el token de restablecimiento de contraseña en la base de datos junto con una fecha de vencimiento
 
     // Enviar un correo electrónico al usuario con un enlace para restablecer la contraseña
-    const resetLink = `https://almartindev.com/reset-password?token=${jwt}`;
+    const resetLink = `https://globalsolutionsprefabriquees.com/reset-password?token=${jwt}`;
 
     await transporter.sendMail({
-      from: '"Demande Web GSP" <info@almartindev.com>', // sender address
+      from: '"Demande Web GSP" <info@globalsolutionsprefabriquees.com>', // sender address
       to: `<${email}>`, // list of receivers
       subject: `Reset Password`, // Subject line
       text: `Pour réinitialiser votre mot de passe, cliquez sur le lien ci-dessous: ${resetLink}`,
